@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    [SerializeField] private ItemDataSO m_ItemDataSO;
+    [SerializeField] protected ItemDataSO m_ItemDataSO;
 
-    public void OnPickup()
+    public virtual void OnPickup()
     {
         ItemPickup itemPickup = GameObject.Find("PlayerCamera").GetComponent<ItemPickup>();
         if (itemPickup != null)

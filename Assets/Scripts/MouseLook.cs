@@ -16,7 +16,7 @@ public class MouseLook : MonoBehaviour
     Quaternion oldRotation;
 
 
-    bool examiningObject = false;
+    public bool examiningObject = false;
     float pickupDistance = 5f;
 
     public GameObject selectedObject;
@@ -55,7 +55,7 @@ public class MouseLook : MonoBehaviour
                     if (selectedObject.CompareTag(pickupTag))
                     {
                         print(selectedObject.name);
-                        examiningObject = true;
+                        //examiningObject = true;
                         //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = true;
                         //oldPosition = selectedObject.transform.position;
                         //oldRotation = selectedObject.transform.rotation;
@@ -88,7 +88,7 @@ public class MouseLook : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
 
-                examiningObject = false;
+                //examiningObject = false;
                 //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
                 //selectedObject.transform.position = oldPosition;
                 //selectedObject.transform.rotation = oldRotation;
@@ -103,7 +103,7 @@ public class MouseLook : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && Inventory.Instance.hasBasket)
             {
-                examiningObject = false;
+                //examiningObject = false;
                 //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
                 selectedObject.GetComponent<ItemScript>().AddToInventory();
                 //enableDisableDOF.EnableDisableDepthOfField(false);

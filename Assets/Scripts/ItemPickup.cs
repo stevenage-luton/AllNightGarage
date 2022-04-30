@@ -49,6 +49,8 @@ public class ItemPickup : MonoBehaviour
         UIScript.ChangeUI(UIEnum.CROSSHAIR);
 
         m_heldItem = null;
+
+        gameObject.GetComponent<MouseLook>().examiningObject = false;
     }
 
     public void AddItemToInventory(ItemDataSO itemData)
@@ -65,10 +67,14 @@ public class ItemPickup : MonoBehaviour
 
         m_currentItem = null;
         m_heldItem = null;
+
+        gameObject.GetComponent<MouseLook>().examiningObject = false;
     }
 
     public void ExamineHeldItem(GameObject itemToHold)
     {
+        gameObject.GetComponent<MouseLook>().examiningObject = true;
+
         m_heldItem = itemToHold;
         m_oldPosition = m_heldItem.transform.position;
         m_oldRotation = m_heldItem.transform.rotation;
