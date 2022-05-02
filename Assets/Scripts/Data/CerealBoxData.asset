@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2e06e97fcd20f74e9005efd90c83a23, type: 3}
-  m_Name: MintBoxData
+  m_Name: CerealBoxData
   m_EditorClassIdentifier: 
-  itemName: Box of Mints
-  price: 199
-  rotateAmount: 90
-  itemPrefab: {fileID: 784107085707350785, guid: 5e76ec486624d3445b352f265a50f7d9, type: 3}
+  itemName: Box of "MandelBro" Cereal
+  price: 250
+  itemPrefab: {fileID: 919132149155446097, guid: b01651ddb5483c64aaa3f7418ae268ca, type: 3}

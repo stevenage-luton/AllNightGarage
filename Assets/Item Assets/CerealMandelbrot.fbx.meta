@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c4bb5350e106384aae3b254149d7b39
+guid: b01651ddb5483c64aaa3f7418ae268ca
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: After8
-    second: {fileID: 2100000, guid: 1b12533c2636347439320629fc55c771, type: 2}
+      name: Cereal
+    second: {fileID: 2100000, guid: 6cc7aa73567a1994aabd7eb1ca9c4273, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Outline
     second: {fileID: 2100000, guid: 7027c010c7fa1d24fb3af83b88a83074, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Side
-    second: {fileID: 2100000, guid: 686c705cae2a14c469f2ce577eb63bc9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -49,7 +44,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -100,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.005
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

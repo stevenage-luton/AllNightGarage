@@ -7,5 +7,6 @@ public class ItemDataSO : ScriptableObject
 {
     public string itemName;
     public int price;
+    public float rotateAmount;
     public GameObject itemPrefab;
 }

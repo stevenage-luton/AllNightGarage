@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] private ItemDataSO m_currentItem;
     [SerializeField] private GameObject m_heldItem;
-    public Text itemText;
+    public TMP_Text itemText;
 
     public Transform destination;
 
@@ -40,6 +41,8 @@ public class ItemPickup : MonoBehaviour
         m_currentItem = null;
         m_heldItem.transform.position = m_oldPosition;
         m_heldItem.transform.rotation = m_oldRotation;
+
+        m_heldItem.GetComponent<BoxCollider>().enabled = true;
 
         m_heldItem.layer = 7;
 
@@ -79,9 +82,11 @@ public class ItemPickup : MonoBehaviour
         m_oldPosition = m_heldItem.transform.position;
         m_oldRotation = m_heldItem.transform.rotation;
 
+        m_heldItem.GetComponent<BoxCollider>().enabled = false;
+
         m_heldItem.transform.position = destination.position;
         m_heldItem.transform.LookAt(Camera.main.transform.position, Vector3.up);
-        m_heldItem.transform.Rotate(0f, 90f, 0f);
+        m_heldItem.transform.Rotate(0f, m_currentItem.rotateAmount, 0f);
 
         m_heldItem.layer = 8;
 
