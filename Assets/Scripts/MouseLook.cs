@@ -17,7 +17,7 @@ public class MouseLook : MonoBehaviour
 
 
     public bool examiningObject = false;
-    float pickupDistance = 5f;
+    float pickupDistance = 3f;
 
     public GameObject selectedObject;
     public Transform selectedTransform;
