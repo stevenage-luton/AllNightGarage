@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Box of Mints
   price: 199
   rotateAmount: 90
-  itemPrefab: {fileID: 784107085707350785, guid: 5e76ec486624d3445b352f265a50f7d9, type: 3}
+  itemPrefab: {fileID: 639379934307558702, guid: 79da2760fd59eb04e88e105683e5eed2, type: 3}
+  zoomDistance: 0.25
