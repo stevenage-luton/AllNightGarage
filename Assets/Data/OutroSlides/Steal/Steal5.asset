@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ad3efc138835b48ad012bda1928359, type: 3}
+  m_Name: Steal5
+  m_EditorClassIdentifier: 
+  slideText: "Ultimately this is not that serious of a crime, so you are fined \xA31000
+    and given a 6 month suspended sentence."

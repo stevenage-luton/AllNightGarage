@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af49f8bb3f59ff44cbfd7c7f14e15b9b, type: 3}
+  m_Name: StealSequence2
+  m_EditorClassIdentifier: 
+  outroSlides:
+  - {fileID: 11400000, guid: b44aa9336143959458f6cd407f976c23, type: 2}
+  - {fileID: 11400000, guid: 7eaa00a898a2a26499d7db01be99f908, type: 2}
+  - {fileID: 11400000, guid: ef992336b3bfc6347a9e71dc485e2d90, type: 2}
+  - {fileID: 11400000, guid: e3642cddd8e385b40a4217afb37d8c85, type: 2}
+  - {fileID: 11400000, guid: 4bb269bf82e93c84389870c093fa50a5, type: 2}

@@ -22,62 +22,130 @@ public class MouseLook : MonoBehaviour
     public GameObject selectedObject;
     public Transform selectedTransform;
 
-    [SerializeField] private string pickupTag = "Item";
+    [SerializeField] private string pickupTag = "Interactable";
 
     public EnableDisableDOF enableDisableDOF;
 
+    public enum State
+    {
+        Movement,
+        Examining,
+        Dialogue,
+        Menu,
+    }
+
+    public State state;
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        state = State.Movement;
+
     }
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
-        if (examiningObject == false)
+        switch (state)
         {
-            
-            playerRotation -= mouseY;
-            playerRotation = Mathf.Clamp(playerRotation, -90f, 90f);
+            case State.Movement:
 
-            transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);
+                Cursor.lockState = CursorLockMode.Locked;
 
-            if (Input.GetMouseButtonDown(0)) {
-                RaycastHit hit;
+                playerRotation -= mouseY;
+                playerRotation = Mathf.Clamp(playerRotation, -90f, 90f);
 
-                if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
+                transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
+                playerBody.Rotate(Vector3.up * mouseX);
+
+                if (Input.GetMouseButtonDown(0))
                 {
-                    selectedTransform = hit.transform;
-                    selectedObject = selectedTransform.gameObject;
-                    //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
-                    if (selectedObject.CompareTag(pickupTag))
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
                     {
-                        print(selectedObject.name);
-                        //examiningObject = true;
-                        //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = true;
-                        //oldPosition = selectedObject.transform.position;
-                        //oldRotation = selectedObject.transform.rotation;
-                        //selectedObject.transform.position = destination.position;
+                        selectedTransform = hit.transform;
+                        selectedObject = selectedTransform.gameObject;
+                        //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
+                        if (selectedObject.CompareTag(pickupTag))
+                        {
+                            print(selectedObject.name);
+                            selectedObject.GetComponent<Interactable>().OnClick();
+                        }
 
-                        //selectedObject.transform.LookAt(Camera.main.transform.position,Vector3.up);
-                        //selectedObject.transform.Rotate(0f, 90f, 0f);
-
-                        //enableDisableDOF.EnableDisableDepthOfField(true);
-
-                        //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(true);
-
-                        selectedObject.GetComponent<ItemScript>().OnPickup();
-
-                        //selectedObject.layer = 8;
-
-                        //UIScript.ChangeUI(UIEnum.INTERACTING);
                     }
 
                 }
+
+                break;
+
+            case State.Examining:
+                Cursor.lockState = CursorLockMode.Locked;
+                if (Input.GetMouseButtonDown(1))
+                {
+                    selectedObject.GetComponent<ItemScript>().OnDrop();
+
+                }
+                else if (Input.GetMouseButtonDown(0) && Inventory.Instance.hasBasket)
+                {
+                    selectedObject.GetComponent<ItemScript>().AddToInventory();
+
+
+                }
+                break;
+
+            case State.Dialogue:
+                Cursor.lockState = CursorLockMode.Confined;
+                break;
+
+            case State.Menu:
+
+                break;
+        }
+
+        if (examiningObject == false)
+        {
+            
+            //playerRotation -= mouseY;
+            //playerRotation = Mathf.Clamp(playerRotation, -90f, 90f);
+
+            //transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
+            //playerBody.Rotate(Vector3.up * mouseX);
+
+            //if (Input.GetMouseButtonDown(0)) {
+            //    RaycastHit hit;
+
+            //    if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
+            //    {
+            //        selectedTransform = hit.transform;
+            //        selectedObject = selectedTransform.gameObject;
+            //        //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
+            //        if (selectedObject.CompareTag(pickupTag))
+            //        {
+            //            print(selectedObject.name);
+            //            //examiningObject = true;
+            //            //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = true;
+            //            //oldPosition = selectedObject.transform.position;
+            //            //oldRotation = selectedObject.transform.rotation;
+            //            //selectedObject.transform.position = destination.position;
+
+            //            //selectedObject.transform.LookAt(Camera.main.transform.position,Vector3.up);
+            //            //selectedObject.transform.Rotate(0f, 90f, 0f);
+
+            //            //enableDisableDOF.EnableDisableDepthOfField(true);
+
+            //            //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(true);
+
+            //            selectedObject.GetComponent<Interactable>().OnClick();
+
+            //            //selectedObject.layer = 8;
+
+            //            //UIScript.ChangeUI(UIEnum.INTERACTING);
+            //        }
+
+            //    }
                     
-            }
+            //}
 
         }
         else

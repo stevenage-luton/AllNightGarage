@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8748482629543018094}
   m_Layer: 7
   m_Name: CerealMandelbrot
-  m_TagString: Item
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22ba816ce18ffa4196a719a24516822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ItemDataSO: {fileID: 11400000, guid: 0c812558119781747bd562a69c13a22f, type: 2}
+  _ItemDataSO: {fileID: 11400000, guid: 0c812558119781747bd562a69c13a22f, type: 2}

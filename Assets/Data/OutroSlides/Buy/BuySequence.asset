@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af49f8bb3f59ff44cbfd7c7f14e15b9b, type: 3}
+  m_Name: BuySequence
+  m_EditorClassIdentifier: 
+  outroSlides:
+  - {fileID: 11400000, guid: cb79ff411614fd144abdc69751242aef, type: 2}
+  - {fileID: 11400000, guid: 26cc547dfa5ab104abe5143d30dbd71e, type: 2}
+  - {fileID: 11400000, guid: 0173e2fac5bec7e4abeddb17aab3eb03, type: 2}
+  - {fileID: 11400000, guid: a93bbb680cd1420498518a47d7e5c96a, type: 2}

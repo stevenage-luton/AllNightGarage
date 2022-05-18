@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class EnableDisableDOF : MonoBehaviour
 {
-    public VolumeProfile m_Profile;
+    public VolumeProfile _Profile;
     UnityEngine.Rendering.Universal.DepthOfField depthOfField;
 
     ClampedFloatParameter maxBlur;
@@ -14,7 +14,7 @@ public class EnableDisableDOF : MonoBehaviour
 
     void Awake()
     {
-        m_Profile.TryGet(out depthOfField);
+        _Profile.TryGet(out depthOfField);
         depthOfField.active = true;
         maxBlur = depthOfField.focalLength;
         depthOfField.focalLength.value = minFocal;

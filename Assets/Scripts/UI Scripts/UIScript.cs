@@ -9,7 +9,7 @@ public class UIScript : MonoBehaviour
     public static Canvas canvas;
     public static GameObject crossHairPanel, interactPanel, MouseButtons, LMBText, BasketTotalPanel;
 
-    void Start()
+    void Awake()
     {
         canvas = GetComponent<Canvas>();
         crossHairPanel = canvas.transform.Find("CrosshairPanel").gameObject;
@@ -36,6 +36,10 @@ public class UIScript : MonoBehaviour
                 crossHairPanel.SetActive(false);
                 break;
             case UIEnum.MENU:
+                crossHairPanel.SetActive(false);
+                break;
+            case UIEnum.DIALOGUE:
+                crossHairPanel.SetActive(false);
                 break;
         }
     }

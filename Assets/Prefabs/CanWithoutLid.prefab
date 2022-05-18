@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8914333137307084192}
   m_Layer: 7
   m_Name: CanWithoutLid
-  m_TagString: Item
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22ba816ce18ffa4196a719a24516822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ItemDataSO: {fileID: 11400000, guid: c52824edb38892d4b9ad6695c4f34fd3, type: 2}
+  _ItemDataSO: {fileID: 11400000, guid: c52824edb38892d4b9ad6695c4f34fd3, type: 2}

@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
 
-    public bool examining = false;
+    public bool remainStationary = false;
 
     void Update()
     {
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (examining == false)
+        if (remainStationary == false)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
