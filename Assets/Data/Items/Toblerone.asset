@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e06e97fcd20f74e9005efd90c83a23, type: 3}
   m_Name: Toblerone
   m_EditorClassIdentifier: 
-  itemName: Triangle Chocolate
-  price: 0
+  itemName: '"Spanglethorpe" Chocolate'
+  price: 399
   rotateAmount: 0
-  itemPrefab: {fileID: 0}
-  zoomDistance: 0
+  itemPrefab: {fileID: 3137261260291138274, guid: 879e18603527ec94cb9eeffcd0d1d657, type: 3}
+  zoomDistance: 0.3
+  pickupSound: {fileID: 8300000, guid: e117ef46cf6f554438280cbf116ea387, type: 3}
+  dropSound: {fileID: 8300000, guid: d056f951ab3394848a7592943f7dd428, type: 3}

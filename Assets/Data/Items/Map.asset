@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   itemName: Road Map
-  price: 649
-  rotateAmount: 0
+  price: 799
+  rotateAmount: 180
   itemPrefab: {fileID: 0}
-  zoomDistance: 0
+  zoomDistance: 0.14
+  pickupSound: {fileID: 8300000, guid: 4500f8a1b46c603408a34da4c16a83b4, type: 3}
+  dropSound: {fileID: 8300000, guid: 75d0a98ce1e14724592b73b9201eb84c, type: 3}

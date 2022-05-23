@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053906b364ddb46428615edebd12d22b, type: 3}
+  m_Name: FirstDialogue_03
+  m_EditorClassIdentifier: 
+  _dialogueCharacter: {fileID: 11400000, guid: 74b92b88fed141448a93d9a8d8e88a6b, type: 2}
+  _dialogueText: How are you doing? I have to buy some stuff or my Son's birthday
+    will be ruined.

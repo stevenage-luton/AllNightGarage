@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FirstDialogue_01
   m_EditorClassIdentifier: 
   _dialogueCharacter: {fileID: 11400000, guid: 74b92b88fed141448a93d9a8d8e88a6b, type: 2}
-  _dialogueText: This is the first line!
+  _dialogueText: Hullo there mate!

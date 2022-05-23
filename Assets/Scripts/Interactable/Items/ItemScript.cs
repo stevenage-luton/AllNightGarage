@@ -36,6 +36,11 @@ public class ItemScript : Interactable
         gameObject.GetComponent<ItemScript>().OnPickup();
     }
 
+    public override string OnHover()
+    {
+        return "Left Click to pick up " + _ItemDataSO.itemName;
+    }
+
     public virtual void OnPickup()
     {
         ItemPickup itemPickup = GameObject.Find("PlayerCamera").GetComponent<ItemPickup>();

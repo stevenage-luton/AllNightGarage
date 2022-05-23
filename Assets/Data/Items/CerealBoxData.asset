@@ -16,4 +16,6 @@ MonoBehaviour:
   price: 250
   rotateAmount: 0
   itemPrefab: {fileID: 919132149155446097, guid: b01651ddb5483c64aaa3f7418ae268ca, type: 3}
-  zoomDistance: 0.15
+  zoomDistance: 0.05
+  pickupSound: {fileID: 8300000, guid: 0681440e038abb34092fa9ec8a285bef, type: 3}
+  dropSound: {fileID: 8300000, guid: eda88da055b7239428a534502f73f2b5, type: 3}

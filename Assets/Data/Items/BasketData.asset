@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shopping Basket
   price: 1000
+  rotateAmount: 0
   itemPrefab: {fileID: 919132149155446097, guid: 64511702c45da4e4d93c20ee857cd50f, type: 3}
+  zoomDistance: 0
+  pickupSound: {fileID: 8300000, guid: ae92db91e00648048b33bc56e96c69de, type: 3}
+  dropSound: {fileID: 8300000, guid: 2e4b51ca06521904181050bdfde07079, type: 3}

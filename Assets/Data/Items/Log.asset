@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e06e97fcd20f74e9005efd90c83a23, type: 3}
+  m_Name: Log
+  m_EditorClassIdentifier: 
+  itemName: Log
+  price: 75
+  rotateAmount: 0
+  itemPrefab: {fileID: 0}
+  zoomDistance: 0
+  pickupSound: {fileID: 8300000, guid: 29ea5343d4a4a3e4f9f5433444734e83, type: 3}
+  dropSound: {fileID: 8300000, guid: ce5a9bf302c242d48b86c4119d355c55, type: 3}

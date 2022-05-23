@@ -39,9 +39,13 @@ public class CutsceneManager : MonoBehaviour
     private string[] _stolenSlides;
 
     [SerializeField]
-    private Transform _itemsPanel;
+    private Transform _itemsPanelLeft;
     [SerializeField]
-    private TextMeshProUGUI _itemTextPrefab;
+    private Transform _itemsPanelRight;
+    [SerializeField]
+    private TextMeshProUGUI _itemTextPrefabLeft;
+    [SerializeField]
+    private TextMeshProUGUI _itemTextPrefabRight;
     [SerializeField]
     private TextMeshProUGUI _itemHeader;
     [SerializeField]
@@ -73,6 +77,9 @@ public class CutsceneManager : MonoBehaviour
     private PlayerMovement _playerMovement;
     [SerializeField]
     private MouseLook _mouseLook;
+
+    private int itemCounter = 1;
+
     void Start()
     {
         _slideText.enabled = false;
@@ -124,10 +131,10 @@ public class CutsceneManager : MonoBehaviour
     {
         while (_nameHeader.alpha >= 0f)
         {
-            _nameHeader.alpha -= 0.001f;
-            _name.alpha -= 0.001f;
-            _objectiveHeader.alpha -= 0.001f;
-            _objective.alpha -= 0.001f;
+            _nameHeader.alpha -= 0.01f;
+            _name.alpha -= 0.01f;
+            _objectiveHeader.alpha -= 0.01f;
+            _objective.alpha -= 0.01f;
 
             yield return null;
         }
@@ -138,7 +145,7 @@ public class CutsceneManager : MonoBehaviour
         while (_cutSceneImage.color.a >= 0f)
         {
             var newColor = _cutSceneImage.color;
-            newColor.a = _cutSceneImage.color.a - 0.005f;
+            newColor.a = _cutSceneImage.color.a - 0.05f;
             _cutSceneImage.color = newColor;
 
             yield return null;
@@ -282,9 +289,24 @@ public class CutsceneManager : MonoBehaviour
                 {
                     itemCount++;
                 }
-            }          
-            TextMeshProUGUI newItemText = Instantiate(_itemTextPrefab, _itemsPanel);
-            newItemText.text = itemCount + "x " + itemName;
+            }
+
+            //if we're on an even number
+            if (itemCounter%2 == 0)
+            {
+                TextMeshProUGUI newItemText = Instantiate(_itemTextPrefabRight, _itemsPanelRight);
+                newItemText.text = itemCount + "x " + itemName;
+                itemCounter++;
+            }
+            else
+            {
+                TextMeshProUGUI newItemText = Instantiate(_itemTextPrefabLeft, _itemsPanelLeft);
+                newItemText.text = itemCount + "x " + itemName;
+                itemCounter++;
+            }
+
+            //TextMeshProUGUI newItemText = Instantiate(_itemTextPrefab, _itemsPanel);
+            
             _sfxSource.PlayOneShot(_boomSfx, 0.7f);
             yield return oneSecondWait;
         }
@@ -298,7 +320,8 @@ public class CutsceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
-        _itemsPanel.gameObject.SetActive(false);
+        _itemsPanelLeft.gameObject.SetActive(false);
+        _itemsPanelRight.gameObject.SetActive(false);
         _itemHeader.alpha = 0f;
         _priceTotal.alpha = 0f;
     }

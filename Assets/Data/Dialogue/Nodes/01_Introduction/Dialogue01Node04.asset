@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1a5fa9a901fe6428d5fd9782c9dce7, type: 3}
+  m_Name: Dialogue01Node04
+  m_EditorClassIdentifier: 
+  _dialogueline: {fileID: 11400000, guid: b7b2a5b0bf0e7174e870555d97e665ce, type: 2}
+  _Choices:
+  - _ChoicePreview: Do me a favour, I'm not that crap. Maybe he'll like that new
+      AA road map?
+    _ChoiceNode: {fileID: 11400000, guid: b50d0c188f2b279428d2b9e724d93b2d, type: 2}
+  - _ChoicePreview: I'll figure something out.
+    _ChoiceNode: {fileID: 0}

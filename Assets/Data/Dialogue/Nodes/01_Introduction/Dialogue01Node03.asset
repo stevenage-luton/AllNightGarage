@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1a5fa9a901fe6428d5fd9782c9dce7, type: 3}
+  m_Script: {fileID: 11500000, guid: d5e4f6ec32a828f45a23a671b876a15b, type: 3}
   m_Name: Dialogue01Node03
   m_EditorClassIdentifier: 
-  _dialogueline: {fileID: 11400000, guid: 3059cade90811d1479a105ff36d4d5f9, type: 2}
-  _Choices:
-  - _ChoicePreview: Yes!
-    _ChoiceNode: {fileID: 11400000, guid: fa830d2051f1e0349b5b2b6805c29b54, type: 2}
-  - _ChoicePreview: No!
-    _ChoiceNode: {fileID: 11400000, guid: fa830d2051f1e0349b5b2b6805c29b54, type: 2}
+  _dialogueline: {fileID: 11400000, guid: e5fe8bc4d53d4a045a8fba80b53f932a, type: 2}
+  _NextNode: {fileID: 11400000, guid: 24d478638dca1fd4a9bf884067f888b3, type: 2}

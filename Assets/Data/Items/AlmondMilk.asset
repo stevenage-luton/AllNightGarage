@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Almond Milk
   price: 125
-  rotateAmount: 0
-  itemPrefab: {fileID: 0}
-  zoomDistance: 0
+  rotateAmount: -90
+  itemPrefab: {fileID: 919132149155446097, guid: 8e57e2f47a27f244a94ede47dca77e6d, type: 3}
+  zoomDistance: 0.2
+  pickupSound: {fileID: 8300000, guid: ed37af1a80cb4e34a8de38dae67eb530, type: 3}
+  dropSound: {fileID: 8300000, guid: ab1ae161fc68b1144a9bc656c850fee9, type: 3}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1a5fa9a901fe6428d5fd9782c9dce7, type: 3}
+  m_Name: PaidSnark
+  m_EditorClassIdentifier: 
+  _dialogueline: {fileID: 11400000, guid: a944f1f10f23e8444af430b842e2daa7, type: 2}
+  _Choices:
+  - _ChoicePreview: Jesus Christ, I'm trying at least.
+    _ChoiceNode: {fileID: 11400000, guid: 37e135366f64fd94ba5cd10f0cbb845c, type: 2}
+  - _ChoicePreview: I fucking hope not.
+    _ChoiceNode: {fileID: 0}
+  - _ChoicePreview: ... Yeah, probably.
+    _ChoiceNode: {fileID: 0}

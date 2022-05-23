@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bleach
   price: 299
-  rotateAmount: 0
-  itemPrefab: {fileID: 0}
-  zoomDistance: 0
+  rotateAmount: 180
+  itemPrefab: {fileID: 2724210511464392586, guid: 84b6306b44a702e4e994e05aa64e23e3, type: 3}
+  zoomDistance: 0.15
+  pickupSound: {fileID: 8300000, guid: 78275949fc9a35041b3f09f694e36e3f, type: 3}
+  dropSound: {fileID: 8300000, guid: 6bf75ffec50f5c3499dad0495890741c, type: 3}

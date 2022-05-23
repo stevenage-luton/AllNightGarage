@@ -39,7 +39,8 @@ public class DialogueInstigator : MonoBehaviour
     private void OnDialogueStart(Dialogue dialogue)
     {
         _DialogueChannel.RaiseDialogueStart(dialogue);
-        gameObject.GetComponentInChildren<MouseLook>().state = MouseLook.State.Dialogue;
+        MouseLook mouseLook = gameObject.GetComponentInChildren<MouseLook>();
+        mouseLook.state = MouseLook.State.Dialogue;
         UIScript.ChangeUI(UIEnum.DIALOGUE);
         _playermovement.remainStationary = true;
     }

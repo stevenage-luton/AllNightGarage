@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 6080854807535388789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5788144, y: -4.431218, z: -1.333638}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8620824496433995098}
   - {fileID: 331108448296349461}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ItemDataSO: {fileID: 11400000, guid: ef24ad8c46106a2408879eb8fac7f8e4, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 6386914522188395816}
   heldBasketParent: {fileID: 0}
 --- !u!1 &7645928484419255076
 GameObject:

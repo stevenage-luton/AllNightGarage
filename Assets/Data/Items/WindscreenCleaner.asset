@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Windscreen Washer
   price: 699
-  rotateAmount: 0
-  itemPrefab: {fileID: 0}
+  rotateAmount: -90
+  itemPrefab: {fileID: 6288398687753467666, guid: 6b2a2b0638a82c44b8cf842cac8d69f3, type: 3}
   zoomDistance: 0
+  pickupSound: {fileID: 8300000, guid: ae92db91e00648048b33bc56e96c69de, type: 3}
+  dropSound: {fileID: 8300000, guid: 2e4b51ca06521904181050bdfde07079, type: 3}

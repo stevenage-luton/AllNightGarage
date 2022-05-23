@@ -11,6 +11,11 @@ public class UIDialogueScript : MonoBehaviour, NodeVisitor
     private TextMeshProUGUI _DialogueText;
 
     [SerializeField]
+    private AudioSource _source;
+    [SerializeField]
+    private AudioClip _sfxSpeach;
+
+    [SerializeField]
     private RectTransform _ChoicesBoxTransform;
 
     public UIChoiceScript _UIChoiceScript;
@@ -21,7 +26,7 @@ public class UIDialogueScript : MonoBehaviour, NodeVisitor
     private bool _ListenToInput = true;
     private DialogueNode _NextNode = null;
 
-    private WaitForSeconds _typeDelay = new WaitForSeconds(0.02f);
+    private WaitForSeconds _typeDelay = new WaitForSeconds(0.05f);
 
     private void Awake()
     {
@@ -96,6 +101,7 @@ public class UIDialogueScript : MonoBehaviour, NodeVisitor
         foreach (char letter in line.DialogueText.ToCharArray())
         {
             _DialogueText.text += letter;
+            _source.PlayOneShot(_sfxSpeach);
             yield return _typeDelay;
         }
     }

@@ -16,36 +16,47 @@ public class BasketScript : ItemScript
     /// </summary>
     [SerializeField]
     private Transform heldBasketParent;
+    [SerializeField]
+    private Transform returnedBasketParent;
     /// <summary>
     /// sets the hasBasket bool in the Inventory Singleton Instance, tells the UI that we have a basket, and then does the rest of the base pickup method.
     /// </summary>
     public override void OnPickup()
     {
-        Inventory.Instance.TakeBasket();
-        UIScript.TakeBasket();
-        ItemPickup itemPickup = GameObject.Find("PlayerCamera").GetComponent<ItemPickup>();
-        if (itemPickup != null)
+        if (!Inventory.Instance.hasBasket && !Inventory.Instance.paidForItems)
         {
-            itemPickup.PickupItem(_ItemDataSO);
+            Inventory.Instance.TakeBasket();
+            UIScript.TakeBasket();
+            ItemPickup itemPickup = GameObject.Find("PlayerCamera").GetComponent<ItemPickup>();
+            if (itemPickup != null)
+            {
+                itemPickup.PickupItem(_ItemDataSO);
+            }
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            SetLayerRecursively(gameObject, 8);
+            animator.SetBool("Open", true);
+            gameObject.transform.position = heldBasketParent.position;
+            gameObject.transform.rotation = heldBasketParent.rotation;
+            gameObject.transform.Rotate(0f, -90f, 0f);
+            gameObject.transform.SetParent(heldBasketParent);
         }
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        SetLayerRecursively(gameObject, 8);
-        animator.SetBool("Open", true);
-        gameObject.transform.position = heldBasketParent.position;
-        gameObject.transform.rotation = heldBasketParent.rotation;
-        gameObject.transform.Rotate(0f, -90f, 0f);
-        gameObject.transform.SetParent(heldBasketParent);
+       
     }
     /// <summary>
     /// calls the drop method in our inventory Singleton, disables the collider so the player doesn't constantly clip backwards into infinity,
     /// and sets layer and layer of all children to the default Item layer
     /// </summary>
     public override void OnDrop()
-    {
-        Inventory.Instance.DropBasket();
+    {       
         gameObject.GetComponent<BoxCollider>().enabled = true;
-        animator.SetBool("False", true);
+        UIScript.DropBasket();
+        animator.SetBool("Open", false);
         SetLayerRecursively(gameObject, 7);
+        Inventory.Instance.DropBasket();
+        gameObject.transform.position = returnedBasketParent.position;
+        gameObject.transform.rotation = returnedBasketParent.rotation;
+        gameObject.transform.Rotate(0f, -90f, 0f);
+        gameObject.transform.SetParent(returnedBasketParent);
     }
 
 }

@@ -15,12 +15,18 @@ public class MouseLook : MonoBehaviour
     Vector3 oldPosition;
     Quaternion oldRotation;
 
+    public Transform dialogueTarget;
+    public float movementTime = 1;
+    public float rotationSpeed = 0.1f;
+
 
     public bool examiningObject = false;
     float pickupDistance = 3f;
 
     public GameObject selectedObject;
     public Transform selectedTransform;
+
+    [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private string pickupTag = "Interactable";
 
@@ -49,7 +55,6 @@ public class MouseLook : MonoBehaviour
         switch (state)
         {
             case State.Movement:
-
                 Cursor.lockState = CursorLockMode.Locked;
 
                 playerRotation -= mouseY;
@@ -58,25 +63,32 @@ public class MouseLook : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
                 playerBody.Rotate(Vector3.up * mouseX);
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    RaycastHit hit;
+                RaycastHit hit;
 
-                    if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance, layerMask))
+                {
+                    selectedTransform = hit.transform;
+                    selectedObject = selectedTransform.gameObject;
+                    if (selectedObject.GetComponent<Interactable>() != null)
                     {
-                        selectedTransform = hit.transform;
-                        selectedObject = selectedTransform.gameObject;
-                        //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
+                        UIScript.DisplayHoverText(selectedObject.GetComponent<Interactable>().OnHover());
+                    }                  
+                    //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        //RaycastHit hit;
                         if (selectedObject.CompareTag(pickupTag))
                         {
-                            print(selectedObject.name);
                             selectedObject.GetComponent<Interactable>().OnClick();
                         }
-
                     }
-
+                }
+                else
+                {
+                    UIScript.hideHoverText();
                 }
 
+               
                 break;
 
             case State.Examining:
@@ -96,93 +108,102 @@ public class MouseLook : MonoBehaviour
 
             case State.Dialogue:
                 Cursor.lockState = CursorLockMode.Confined;
+
+
+                if (!dialogueTarget)
+                    return;
+                //Interpolate Rotation
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, dialogueTarget.rotation, rotationSpeed * Time.deltaTime);
+
+                
                 break;
 
             case State.Menu:
-
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
 
-        if (examiningObject == false)
-        {
-            
-            //playerRotation -= mouseY;
-            //playerRotation = Mathf.Clamp(playerRotation, -90f, 90f);
+        //if (examiningObject == false)
+        //{
 
-            //transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
-            //playerBody.Rotate(Vector3.up * mouseX);
+        //    //playerRotation -= mouseY;
+        //    //playerRotation = Mathf.Clamp(playerRotation, -90f, 90f);
 
-            //if (Input.GetMouseButtonDown(0)) {
-            //    RaycastHit hit;
+        //    //transform.localRotation = Quaternion.Euler(playerRotation, 0f, 0f);
+        //    //playerBody.Rotate(Vector3.up * mouseX);
 
-            //    if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
-            //    {
-            //        selectedTransform = hit.transform;
-            //        selectedObject = selectedTransform.gameObject;
-            //        //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
-            //        if (selectedObject.CompareTag(pickupTag))
-            //        {
-            //            print(selectedObject.name);
-            //            //examiningObject = true;
-            //            //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = true;
-            //            //oldPosition = selectedObject.transform.position;
-            //            //oldRotation = selectedObject.transform.rotation;
-            //            //selectedObject.transform.position = destination.position;
+        //    //if (Input.GetMouseButtonDown(0)) {
+        //    //    RaycastHit hit;
 
-            //            //selectedObject.transform.LookAt(Camera.main.transform.position,Vector3.up);
-            //            //selectedObject.transform.Rotate(0f, 90f, 0f);
+        //    //    if (Physics.Raycast(transform.position, transform.forward, out hit, pickupDistance))
+        //    //    {
+        //    //        selectedTransform = hit.transform;
+        //    //        selectedObject = selectedTransform.gameObject;
+        //    //        //selectedObject.GetComponent<ItemDataSO>().itemName = "test";
+        //    //        if (selectedObject.CompareTag(pickupTag))
+        //    //        {
+        //    //            print(selectedObject.name);
+        //    //            //examiningObject = true;
+        //    //            //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = true;
+        //    //            //oldPosition = selectedObject.transform.position;
+        //    //            //oldRotation = selectedObject.transform.rotation;
+        //    //            //selectedObject.transform.position = destination.position;
 
-            //            //enableDisableDOF.EnableDisableDepthOfField(true);
+        //    //            //selectedObject.transform.LookAt(Camera.main.transform.position,Vector3.up);
+        //    //            //selectedObject.transform.Rotate(0f, 90f, 0f);
 
-            //            //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(true);
+        //    //            //enableDisableDOF.EnableDisableDepthOfField(true);
 
-            //            selectedObject.GetComponent<Interactable>().OnClick();
+        //    //            //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(true);
 
-            //            //selectedObject.layer = 8;
+        //    //            selectedObject.GetComponent<Interactable>().OnClick();
 
-            //            //UIScript.ChangeUI(UIEnum.INTERACTING);
-            //        }
+        //    //            //selectedObject.layer = 8;
 
-            //    }
-                    
-            //}
+        //    //            //UIScript.ChangeUI(UIEnum.INTERACTING);
+        //    //        }
 
-        }
-        else
-        {
-            //selectedObject.transform.Rotate(Vector3.up, mouseX);
-            //selectedObject.transform.Rotate(Vector3.right, mouseY, Space.World);
+        //    //    }
 
-            if (Input.GetMouseButtonDown(1))
-            {
+        //    //}
 
-                //examiningObject = false;
-                //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
-                //selectedObject.transform.position = oldPosition;
-                //selectedObject.transform.rotation = oldRotation;
-                //enableDisableDOF.EnableDisableDepthOfField(false);
+        //}
+        //else
+        //{
+        //    //selectedObject.transform.Rotate(Vector3.up, mouseX);
+        //    //selectedObject.transform.Rotate(Vector3.right, mouseY, Space.World);
 
-                //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(false);
-                //UIScript.ChangeUI(UIEnum.CROSSHAIR);
+        //    if (Input.GetMouseButtonDown(1))
+        //    {
 
-                //selectedObject.layer = 7;
+        //        //examiningObject = false;
+        //        //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
+        //        //selectedObject.transform.position = oldPosition;
+        //        //selectedObject.transform.rotation = oldRotation;
+        //        //enableDisableDOF.EnableDisableDepthOfField(false);
 
-                selectedObject.GetComponent<ItemScript>().OnDrop();
-            }
-            else if (Input.GetMouseButtonDown(0) && Inventory.Instance.hasBasket)
-            {
-                //examiningObject = false;
-                //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
-                selectedObject.GetComponent<ItemScript>().AddToInventory();
-                //enableDisableDOF.EnableDisableDepthOfField(false);
+        //        //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(false);
+        //        //UIScript.ChangeUI(UIEnum.CROSSHAIR);
 
-                //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(false);
-                //UIScript.ChangeUI(UIEnum.CROSSHAIR);
+        //        //selectedObject.layer = 7;
 
-                //selectedObject.layer = 7;
+        //        selectedObject.GetComponent<ItemScript>().OnDrop();
+        //    }
+        //    else if (Input.GetMouseButtonDown(0) && Inventory.Instance.hasBasket)
+        //    {
+        //        //examiningObject = false;
+        //        //GameObject.Find("Player").GetComponent<PlayerMovement>().examining = false;
+        //        selectedObject.GetComponent<ItemScript>().AddToInventory();
+        //        //enableDisableDOF.EnableDisableDepthOfField(false);
 
-            }
-        }
+        //        //GameObject.Find("UI Canvas").GetComponent<UIFadeScript>().UIFade(false);
+        //        //UIScript.ChangeUI(UIEnum.CROSSHAIR);
+
+        //        //selectedObject.layer = 7;
+
+        //    }
+        //}
+        
 
     }
 

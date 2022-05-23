@@ -8,13 +8,14 @@ public class ItemPickup : MonoBehaviour
 {
     [SerializeField] private ItemDataSO _currentItem;
     [SerializeField] private GameObject _heldItem;
+    [SerializeField] private AudioSource _source;
+
     public TMP_Text itemText;
     public TMP_Text itemPrice;
     public TMP_Text basketTotal;
-
     public Transform destination;
 
-    private Vector3 _oldPosition; 
+    private Vector3 _oldPosition;
     private Quaternion _oldRotation;
 
     public float sensitivity = 400f;
@@ -24,6 +25,8 @@ public class ItemPickup : MonoBehaviour
     public UIFadeScript UIFadeScript;
 
     private Camera _cam;
+
+    Collider[] _helditemColliders;
 
     private void Start()
     {
@@ -36,15 +39,21 @@ public class ItemPickup : MonoBehaviour
 
         itemText.text = _currentItem.itemName;
 
+        _source.PlayOneShot(_currentItem.pickupSound);
     }
 
     public void DropCurrentItem()
     {
+        _source.PlayOneShot(_currentItem.dropSound);
+
         _currentItem = null;
         _heldItem.transform.position = _oldPosition;
         _heldItem.transform.rotation = _oldRotation;
 
-        _heldItem.GetComponent<Collider>().enabled = true;
+        foreach (Collider collider in _helditemColliders)
+        {
+            collider.enabled = true;
+        }
 
         _heldItem.layer = 7;
 
@@ -87,7 +96,14 @@ public class ItemPickup : MonoBehaviour
         itemPrice.text = _heldItem.GetComponent<ItemScript>().PriceString();
         basketTotal.text = Inventory.Instance.PriceTotal();
 
-        _heldItem.GetComponent<Collider>().enabled = false;
+        _helditemColliders = _heldItem.transform.GetComponentsInChildren<Collider>();
+
+        foreach (Collider collider in _helditemColliders)
+        {
+            collider.enabled = false;
+        }
+
+        //_heldItem.GetComponent<Collider>().enabled = false;
 
         _heldItem.transform.position = destination.position;
         _heldItem.transform.LookAt(Camera.main.transform.position, Vector3.up);
